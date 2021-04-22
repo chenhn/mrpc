@@ -2,6 +2,26 @@ mrpc-support-spring docs
 
 ## 快速开始
 
+### 安装
+
+使用git下载或者下载zip编译安装
+
+* git clone
+
+```
+$ git clone https://github.com/pretent/mrpc.git
+$ cd mrpc
+$ mvn clean install
+```
+
+* 下载zip
+
+```
+$ unzip master.zip
+$ cd master
+$ mvn clean install
+```
+
 ### 添加maven 依赖
 ```
 <dependency>
@@ -9,9 +29,10 @@ mrpc-support-spring docs
 	<artifactId>mrpc-core</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 </dependency>
+
 <dependency>
 	<groupId>org.pretent.open</groupId>
-	<artifactId>mrpc-core-support</artifactId>
+	<artifactId>mrpc-support-spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 </dependency>
 ```
@@ -145,7 +166,26 @@ public class UserAction {
 }
 ```
 ##### reference xml标签配置
-暂未实现
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mrpc="http://blog.csdn.net/pretent/schema/mrpc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+	http://blog.csdn.net/pretent/schema/mrpc 
+	http://blog.csdn.net/pretent/schema/mrpc.xsd">
+
+	<mrpc:register address="zookeeper://127.0.0.1:2181"/>
+	
+	<mrpc:reference id="userService" interface="server.UserService"/>
+	
+	<!-- 为UserAction注入服务 -->
+	<bean id="userAction" class="client.UserAction" >
+		<property name="userService" ref="userService" />
+	</bean>
+</beans>  
+```
+
 
 感谢宁儿的大力支持和无私奉献
 欢迎共同进步

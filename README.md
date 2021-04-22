@@ -1,14 +1,11 @@
 # mrpc
 mrpc 是一个java语言分布式服务框架,旨在快速开发高可用的分布式服务/消费
-# mrpc 特性
-* 与Spring无缝整合
-* 简单高效的rpc调用实现
-* 服务动态注册和发现，支持zookeeper、redis
-* 服务负载均衡（随机调用）
-* 服务调用超时重连
-* 服务不可用重试其他服务提供者
 
 # 开始
+
+Spring 请参考[Spring Docs](mrpc-support/mrpc-support-spring/README.md)
+
+SpringBoot 请参考[SpringBoot Docs](mrpc-support/spring-boot-starter-mrpc/README.md)
 
 ## 安装
 
@@ -19,7 +16,7 @@ mrpc 是一个java语言分布式服务框架,旨在快速开发高可用的分�
 ```
 $ git clone https://github.com/pretent/mrpc.git
 $ cd mrpc
-$ maven clean install
+$ mvn clean install
 ```
 
 * 下载zip
@@ -27,9 +24,9 @@ $ maven clean install
 ```
 $ unzip master.zip
 $ cd master
-$ maven clean install
+$ mvn clean install
 ```
-Spring 请参考[Spring Docs](mrpc-support/mrpc-support-spring/README.md)
+
 ## 添加maven 依赖
 ```
 <dependency>
@@ -89,12 +86,22 @@ consumer.timeout=15000
 prot=51000
 ```
 
+# mrpc 特性
+* 与SpringBoot无缝整合
+* 与Spring无缝整合
+* 简单高效的rpc调用实现
+* 服务动态注册和发现，支持zookeeper、redis
+* 服务负载均衡（随机调用）
+* 服务调用超时重连
+* 服务不可用重试其他服务提供者
+
 # 架构
 
 ![Architecture](./architecture.png)
 
 # 更新日志
 
+* 2016年12月13日23:32:44 支持SpringBoot
 * 2016年12月12日22:34:37 支持Spring注解方式注册和使用服务
 * 2016年12月09日13:59:01 新增支持redis注册中心
 * 2016年12月08日15:56:08 支持根据包扫描发布服务
